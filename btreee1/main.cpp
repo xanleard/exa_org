@@ -22,16 +22,13 @@ int latitud;
 int edad;
 };
 
-
-
-// A BTree node
 class BTreeNode
 {
-    int *keys;  // An array of keys
-    int t;      // Minimum degree (defines the range for number of keys)
-    BTreeNode **C; // An array of child pointers
-    int n;     // Current number of keys
-    bool leaf; // Is true when node is leaf. Otherwise false
+    int *keys;
+    int t;
+    BTreeNode **C;
+    int n;
+    bool leaf;
     nino child;
 
 public:
@@ -45,30 +42,28 @@ public:
     void traverse();
 
 
-    BTreeNode *search(int k);   // returns NULL if k is not present.
-
+    BTreeNode *search(int k);
 friend class BTree;
 };
 
-// A BTree
 class BTree
 {
-    BTreeNode *root; // Pointer to root node
-    int t;  // Minimum degree
+    BTreeNode *root;
+    int t;
 public:
-    // Constructor (Initializes tree as empty)
+
     BTree(int _t)
     {  root = NULL;  t = _t; }
 
-    // function to traverse the tree
+
     void traverse()
     {if (root != NULL) root->traverse(); }
 
-    // function to search a key in this tree
+
     BTreeNode* search(int k)
     { return (root == NULL)? NULL : root->search(k); }
 
-    // The main function that inserts a new key in this B-Tree
+
     void insert(string nom,int status,int log,int lati,int edad);
     //hash
     int hashCode(string nom);
@@ -156,7 +151,7 @@ void BTree::insert(string nom,int status,int log,int lati,int edad)
         root->keys[0] = k;
         root->n = 1;
     }
-    else // If tree is not empty
+    else
     {
 
         if (root->n == 2*t-1)
@@ -178,7 +173,7 @@ void BTree::insert(string nom,int status,int log,int lati,int edad)
             s->C[i]->insertNonFull(k,nom,status,log,lati,edad);
             root = s;
         }
-        else  // If root is not full, call insertNonFull for root
+        else
             root->insertNonFull(k,nom,status,log,lati,edad);
     }
 }
@@ -245,14 +240,16 @@ int main(int argc, char *argv[])
     QCoreApplication a(argc, argv);
 
     BTree b;
-
+do{
     cout<<"****************Menu*********"<<endl;
-    cout<<"*                           *"<<endl;
+    cout<<"*    1)ingrese un niño      *"<<endl;
     cout<<"*                           *"<<endl;
     cout<<"*                           *"<<endl;
     cout<<"*****************************"<<endl;
+    int op;
+    cin>>op;
 
-do{
+
     switch(op){
 
         case 1:
