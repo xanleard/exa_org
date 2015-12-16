@@ -84,7 +84,7 @@ BTreeNode::BTreeNode(int t1, bool leaf1)
 void BTree::inserte_gif(string re){
     Regalo rega;
     rega.desc=re;
-    rega.control_parental=N;
+
 }
 
 int BTree::hashCode(string text){
@@ -237,14 +237,15 @@ int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
 
-    BTree b;
-do{
+    BTree *b;
+
     cout<<"****************Menu*********"<<endl;
     cout<<"*    1)ingrese un niño      *"<<endl;
     cout<<"*                           *"<<endl;
     cout<<"*                           *"<<endl;
     cout<<"*****************************"<<endl;
     int op;
+ do{
     cin>>op;
 
 
@@ -266,12 +267,11 @@ do{
            cin>>lon;
            cout<<"*  latitud del niño  :         *"<<endl;
            cin>>lat;
-            b.insert(nom,compo,lon,lat,edad);
+            b->insert(nom,compo,lon,lat,edad);
         break;
-       case 2:
 
     }
-  }while(op1=4);
+  }while(op=4);
 
     return a.exec();
 }
