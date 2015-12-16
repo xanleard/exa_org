@@ -82,11 +82,9 @@ BTreeNode::BTreeNode(int t1, bool leaf1)
 }
 
 void BTree::inserte_gif(string re){
-
-    Regalo rega=re;
-
-
-
+    Regalo rega;
+    rega.desc=re;
+    rega.control_parental=N;
 }
 
 int BTree::hashCode(string text){
